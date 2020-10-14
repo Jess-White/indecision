@@ -3,7 +3,12 @@ import './App.css';
 import { getRepoData } from './services/github';
 import BarChart from './components/BarChart';
 
-const FRAMEWORKDATA = [{owner: "vuejs", repo: "vue"},{owner: "facebook", repo: "react"}]
+const FRAMEWORKDATA = [
+{owner: "vuejs", repo: "vue"},
+{owner: "facebook", repo: "react"},
+{owner: "emberjs", repo: "ember.js"},
+{owner: "angular", repo: "angular.js"}
+]
 
 function fetchRepos(repos) {
   const promises = repos.map(getRepoData)
@@ -18,7 +23,7 @@ function App() {
       setData(response)
     })
   }, [])
-  
+
   return (
     <div className="App">
       <BarChart data={data}/>

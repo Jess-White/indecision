@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getRepoData } from './services/github';
+import { getRepoData, fetchRepos } from './services/github';
 import BarChart from './components/BarChart';
-
-const FRAMEWORKDATA = [
-{owner: "vuejs", repo: "vue"},
-{owner: "facebook", repo: "react"},
-{owner: "emberjs", repo: "ember.js"},
-{owner: "angular", repo: "angular.js"}
-]
-
-function fetchRepos(repos) {
-  const promises = repos.map(getRepoData)
-  return Promise.all(promises)
-}
+import { FRAMEWORKDATA } from './services/Endpoints'
 
 function App() {
   const [data, setData] = useState([])

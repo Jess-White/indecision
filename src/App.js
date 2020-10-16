@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { getRepoData, fetchRepos, fetchBatchCommits, fetchBatchIssues, fetchBatchPulls } from './services/github';
 import BarChart from './components/BarChart';
+import DoughnutChart from './components/DoughnutChart';
 import { FRAMEWORKDATA } from './services/FrameworkData';
 
 function App() {
@@ -49,6 +50,8 @@ function App() {
         }}
       </select>
       <BarChart repos={repos} commits={commits} issues={issues} pulls={pulls}/>
+      <DoughnutChart repos={repos} commits={commits} issues={issues} pulls={pulls}/>
+
     </div>
   );
 }

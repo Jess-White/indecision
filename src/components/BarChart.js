@@ -3,19 +3,47 @@ import {Bar} from 'react-chartjs-2';
 
 export default class BarChart extends React.Component {
   render() {
-    console.log(this.props.data)
+    console.log(this.props.repos)
     return (
       <div>
         <Bar
           data={
-            {labels: this.props.data.map(repo => repo.name),
+            {labels: this.props.repos.map(repo => repo.name),
               datasets: [
                 {
-                  label: this.name,
+                  label: "stars",
                   backgroundColor: 'rgba(75,192,192,1)',
                   borderColor: 'rgba(0,0,0,1)',
                   borderWidth: 1,
-                  data: this.props.data.map(repo => repo.stargazers_count)
+                  data: this.props.repos.map(repo => repo.stargazers_count)
+                },
+                {
+                  label: "forks",
+                  backgroundColor: 'red',
+                  borderColor: 'rgba(0,0,0,1)',
+                  borderWidth: 1,
+                  data: this.props.repos.map(repo => repo.forks_count)
+                },
+                {
+                  label: "commits",
+                  backgroundColor: 'yellow',
+                  borderColor: 'rgba(0,0,0,1)',
+                  borderWidth: 1,
+                  data: this.props.commits
+                },
+                {
+                  label: "issues",
+                  backgroundColor: 'orange',
+                  borderColor: 'rgba(0,0,0,1)',
+                  borderWidth: 1,
+                  data: this.props.issues
+                },
+                {
+                  label: "pulls",
+                  backgroundColor: 'green',
+                  borderColor: 'rgba(0,0,0,1)',
+                  borderWidth: 1,
+                  data: this.props.pulls
                 }
               ]}
             }

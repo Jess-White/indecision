@@ -4,6 +4,7 @@ import { getRepoData, fetchRepos, fetchBatchCommits, fetchBatchIssues, fetchBatc
 import { castNewVote, getVoteData } from './services/VoteCounterApi';
 import BarChart from './components/BarChart';
 import DoughnutChart from './components/DoughnutChart';
+import VoteTallyChart from './components/VoteTallyChart';
 import VoteForm from './components/VoteForm';
 import VoteIndex from './components/VoteIndex';
 import { FRAMEWORKDATA } from './services/FrameworkData';
@@ -19,33 +20,33 @@ function App() {
   const [error, setError] = useState("")
   const [votes, setVotes] = useState([])
   useEffect(() => {
-    // fetchRepos(frameworks)
-    //   .then(response => {
-    //     setRepos(response)
-    //   }).catch(error => {
-    //     setError("Something went wrong.")
-    //   })
-    // fetchBatchCommits(frameworks)
-    //   .then(response => {
-    //     console.log(response)
-    //     setCommits(response)
-    //   }).catch(error => {
-    //     setError("Something went wrong.")
-    //   })
-    // fetchBatchIssues(frameworks)
-    //   .then(response => {
-    //     console.log(response)
-    //     setIssues(response)
-    //   }).catch(error => {
-    //     setError("Something went wrong.")
-    //   })
-    // fetchBatchPulls(frameworks)
-    //   .then(response => {
-    //     console.log(response)
-    //     setPulls(response)
-    //   }).catch(error => {
-    //     setError("Something went wrong.")
-    //   })
+    fetchRepos(frameworks)
+      .then(response => {
+        setRepos(response)
+      }).catch(error => {
+        setError("Something went wrong.")
+      })
+    fetchBatchCommits(frameworks)
+      .then(response => {
+        console.log(response)
+        setCommits(response)
+      }).catch(error => {
+        setError("Something went wrong.")
+      })
+    fetchBatchIssues(frameworks)
+      .then(response => {
+        console.log(response)
+        setIssues(response)
+      }).catch(error => {
+        setError("Something went wrong.")
+      })
+    fetchBatchPulls(frameworks)
+      .then(response => {
+        console.log(response)
+        setPulls(response)
+      }).catch(error => {
+        setError("Something went wrong.")
+      })
     getVoteData(votes) 
       .then(response => {
         setVotes(response)
@@ -80,9 +81,11 @@ function App() {
           <option>{other.name}</option>) 
         }}
       </select>
-      
+      <BarChart repos={repos} commits={commits} issues={issues} pulls={pulls}/>
+      <DoughnutChart repos={repos} commits={commits} issues={issues} pulls={pulls}/>
       <VoteForm vote={vote} frameworks={frameworks}handleVote={handleVote} />
       <VoteIndex votes={votes} />
+      <VoteTallyChart votes={votes} />
     </div>
   );
 }

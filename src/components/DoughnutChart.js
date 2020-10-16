@@ -47,7 +47,7 @@ export default class DoughnutChart extends React.Component {
               options={{
                 title:{
                   display:true,
-                  text:'Average Rainfall per month',
+                  text:'forks',
                   fontSize:20
                 },
                 legend:{
@@ -72,7 +72,7 @@ export default class DoughnutChart extends React.Component {
                 options={{
                   title:{
                     display:true,
-                    text:'Average Rainfall per month',
+                    text:'commits',
                     fontSize:20
                   },
                   legend:{
@@ -97,7 +97,7 @@ export default class DoughnutChart extends React.Component {
                     options={{
                       title:{
                         display:true,
-                        text:'Average Rainfall per month',
+                        text:'issues',
                         fontSize:20
                       },
                       legend:{
@@ -122,7 +122,7 @@ export default class DoughnutChart extends React.Component {
                     options={{
                       title:{
                         display:true,
-                        text:'Average Rainfall per month',
+                        text:'pulls',
                         fontSize:20
                       },
                       legend:{

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { getRepoData, fetchRepos, fetchBatchCommits, fetchBatchIssues, fetchBatchPulls } from './services/github';
+import { castNewVote, getVoteData } from './services/VoteCounterApi';
 import BarChart from './components/BarChart';
 import DoughnutChart from './components/DoughnutChart';
+import VoteForm from './components/VoteForm';
+import VoteIndex from './components/VoteIndex';
 import { FRAMEWORKDATA } from './services/FrameworkData';
 
 function App() {
@@ -12,25 +15,42 @@ function App() {
   const [commits, setCommits] = useState([])
   const [issues, setIssues] = useState([])
   const [pulls, setPulls] = useState([])
+  const [vote, setVote] = useState({email: '', framework: ''})
+  const [error, setError] = useState("")
+  const [votes, setVotes] = useState([])
   useEffect(() => {
-    fetchRepos(frameworks)
+    // fetchRepos(frameworks)
+    //   .then(response => {
+    //     setRepos(response)
+    //   }).catch(error => {
+    //     setError("Something went wrong.")
+    //   })
+    // fetchBatchCommits(frameworks)
+    //   .then(response => {
+    //     console.log(response)
+    //     setCommits(response)
+    //   }).catch(error => {
+    //     setError("Something went wrong.")
+    //   })
+    // fetchBatchIssues(frameworks)
+    //   .then(response => {
+    //     console.log(response)
+    //     setIssues(response)
+    //   }).catch(error => {
+    //     setError("Something went wrong.")
+    //   })
+    // fetchBatchPulls(frameworks)
+    //   .then(response => {
+    //     console.log(response)
+    //     setPulls(response)
+    //   }).catch(error => {
+    //     setError("Something went wrong.")
+    //   })
+    getVoteData(votes) 
       .then(response => {
-        setRepos(response)
-      })
-    fetchBatchCommits(frameworks)
-      .then(response => {
-        console.log(response)
-        setCommits(response)
-      })
-    fetchBatchIssues(frameworks)
-      .then(response => {
-        console.log(response)
-        setIssues(response)
-      })
-    fetchBatchPulls(frameworks)
-      .then(response => {
-        console.log(response)
-        setPulls(response)
+        setVotes(response)
+      }).catch(error => {
+        setError("Something went wrong.")
       })
   }, [frameworks])
 
@@ -40,6 +60,17 @@ function App() {
     setFrameworks([...frameworks, framework])
     console.log(framework)
   } 
+  const handleVote = (vote) => {
+    setVotes([...votes, vote])
+  }
+
+  // const handleChange = (event) => {
+  //   const {name, value} = event.target;
+  //   setInputValues({...inputValues, [name]: value});
+  // }
+  if (error) {
+    return <h1>{error}</h1>
+  }
 
   return (
     <div className="App">
@@ -49,9 +80,9 @@ function App() {
           <option>{other.name}</option>) 
         }}
       </select>
-      <BarChart repos={repos} commits={commits} issues={issues} pulls={pulls}/>
-      <DoughnutChart repos={repos} commits={commits} issues={issues} pulls={pulls}/>
-
+      
+      <VoteForm vote={vote} frameworks={frameworks}handleVote={handleVote} />
+      <VoteIndex votes={votes} />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { getRepoData, fetchRepos, fetchBatchCommits, fetchBatchIssues, fetchBatchPulls } from './services/github';
 import { castNewVote, getVoteData } from './services/VoteCounterApi';
+import Header from './components/Header';
 import BarChart from './components/BarChart';
 import DoughnutChart from './components/DoughnutChart';
 import VoteTallyChart from './components/VoteTallyChart';
@@ -75,6 +76,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <select onChange={handleChange}>
         <option value="">Please select</option>
         {otherFrameworks.map(other => 

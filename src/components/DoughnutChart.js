@@ -11,9 +11,9 @@ export default class DoughnutChart extends React.Component {
         {labels: this.props.repos.map(repo => repo.name),
           datasets: [
             {
-            label: "stars",
-            backgroundColor: 'rgba(75,192,192,1)',
-            borderColor: 'rgba(0,0,0,1)',
+            label: "API DATA",
+            backgroundColor: ["#0dba86", "#00e6e6", "#ff4500", "#e6003a"],
+            borderColor: "#ffff1b",
             borderWidth: 1,
             data: this.props.repos.map(repo => repo.stargazers_count)
           }
@@ -23,7 +23,8 @@ export default class DoughnutChart extends React.Component {
             title:{
               display:true,
               text:'Stars',
-              fontSize:20
+              fontSize:20,
+              color:"#ffff1b"
             },
             legend:{
               display:true,
@@ -36,9 +37,9 @@ export default class DoughnutChart extends React.Component {
             {labels: this.props.repos.map(repo => repo.name),
               datasets: [
               {
-                label: "forks",
-                backgroundColor: 'red',
-                borderColor: 'rgba(0,0,0,1)',
+                label: "Forks",
+                backgroundColor: ["#0dba86", "#00e6e6", "#ff4500", "#e6003a"],
+                borderColor: "#ffff1b",
                 borderWidth: 1,
                 data: this.props.repos.map(repo => repo.forks_count)
               }
@@ -47,7 +48,7 @@ export default class DoughnutChart extends React.Component {
               options={{
                 title:{
                   display:true,
-                  text:'forks',
+                  text:'Forks',
                   fontSize:20
                 },
                 legend:{
@@ -61,9 +62,9 @@ export default class DoughnutChart extends React.Component {
               {labels: this.props.repos.map(repo => repo.name),
                 datasets: [
                 {
-                  label: "commits",
-                  backgroundColor: 'yellow',
-                  borderColor: 'rgba(0,0,0,1)',
+                  label: "Commits",
+                  backgroundColor: ["#0dba86", "#00e6e6", "#ff4500", "#e6003a"],
+                  borderColor: "#ffff1b",
                   borderWidth: 1,
                   data: this.props.commits
                 }
@@ -72,7 +73,7 @@ export default class DoughnutChart extends React.Component {
                 options={{
                   title:{
                     display:true,
-                    text:'commits',
+                    text:'Commits',
                     fontSize:20
                   },
                   legend:{
@@ -86,9 +87,9 @@ export default class DoughnutChart extends React.Component {
                   {labels: this.props.repos.map(repo => repo.name),
                     datasets: [
                     {
-                      label: "issues",
-                      backgroundColor: 'orange',
-                      borderColor: 'rgba(0,0,0,1)',
+                      label: "Issues",
+                      backgroundColor: ["#0dba86", "#00e6e6", "#ff4500", "#e6003a"],
+                      borderColor: "#ffff1b",
                       borderWidth: 1,
                       data: this.props.issues
                     }
@@ -97,7 +98,7 @@ export default class DoughnutChart extends React.Component {
                     options={{
                       title:{
                         display:true,
-                        text:'issues',
+                        text:'Issues',
                         fontSize:20
                       },
                       legend:{
@@ -111,9 +112,9 @@ export default class DoughnutChart extends React.Component {
                   {labels: this.props.repos.map(repo => repo.name),
                     datasets: [
                     {
-                      label: "pulls",
-                      backgroundColor: 'green',
-                      borderColor: 'rgba(0,0,0,1)',
+                      label: "Pulls",
+                      backgroundColor: ["#0dba86", "#00e6e6", "#ff4500", "#e6003a"],
+                      borderColor: "#ffff1b",
                       borderWidth: 1,
                       data: this.props.pulls
                     }
@@ -122,7 +123,7 @@ export default class DoughnutChart extends React.Component {
                     options={{
                       title:{
                         display:true,
-                        text:'pulls',
+                        text:'Pulls',
                         fontSize:20
                       },
                       legend:{

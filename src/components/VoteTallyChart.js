@@ -1,45 +1,37 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import { tallyVotes } from '../services/VoteCounterApi';
 
 export default class VoteTallyChart extends React.Component {
-    TallyVotes() {
-      
-      this.props.votes.map(vote =>
-
-        voteHash[vote:] 0
-
-        )
-    }
   render() {
-    console.log(this.props.votes)
+    console.log(tallyVotes(this.props.votes))
     return (
       <div>
       <Doughnut
-      data={
-        {labels: this.props.votes.map(vote => vote,
-          datasets: [
-            {
-            label: vote.framework,
-            backgroundColor: 'rgba(75,192,192,1)',
-            borderColor: 'rgba(0,0,0,1)',
-            borderWidth: 1,
-            data: this.props.votes.map
-          }
-        ]}
-      }
-          options={{
-            title:{
-              display:true,
-              text:'Votes',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-          />
+                data={
+                  {labels: tallyVotes(this.props.votes).map(tally => tally.name),
+                    datasets: [
+                    {
+                      label: "Votes",
+                      backgroundColor: ["#0dba86", "#00e6e6", "#ff4500", "#e6003a"],
+                      borderColor: "#ffff1b",
+                      borderWidth: 1,
+                      data: tallyVotes(this.props.votes).map(tally => tally.total)
+                    }
+                  ]}
+                }
+                    options={{
+                      title:{
+                        display:true,
+                        text:'Votes',
+                        fontSize:20
+                      },
+                      legend:{
+                        display:true,
+                        position:'right'
+                      }
+                    }}
+                    />
         </div>
-      );
-    }
-  }
+        );
+      }}

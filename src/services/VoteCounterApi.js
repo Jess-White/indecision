@@ -6,7 +6,7 @@ export const castNewVote = ({email, framework}) => {
     .then(response => response.data)
 }
 
-export const getVoteData = (votes) => {
+export const getVoteData = () => {
   return axios('http://localhost:3000/api/votes')
     .then(response => response.data)
 }
@@ -17,8 +17,8 @@ export const tallyVotes = (votes) => {
   {"name": "vue", "total": 0},
   {"name": "angular.js", "total": 0},
   {"name": "react", "total": 0}]
-  votes.map((vote) => {
-    tallyArray.map((tally) => {
+  votes.forEach((vote) => {
+    tallyArray.forEach((tally) => {
       if (tally["name"] === vote.framework) {
         tally["total"] = tally["total"] + 1
       }

@@ -19,12 +19,11 @@ import { FRAMEWORKDATA } from './services/FrameworkData';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [frameworks, setFrameworks] = useState(FRAMEWORKDATA)
   const [repos, setRepos] = useState([])
   const [commits, setCommits] = useState([])
   const [issues, setIssues] = useState([])
   const [pulls, setPulls] = useState([])
-  const [vote, setVote] = useState({email: '', framework: ''})
+  const vote = useState({email: '', framework: ''})
   const [error, setError] = useState("")
   const [votes, setVotes] = useState([])
   const [showStars, setShowStars] = useState(false);
@@ -35,15 +34,6 @@ function App() {
   const [showVotes, setShowVotes] = useState(false);
 
   const [showAbout, setShowAbout] = useState(false);
-
-  const handleCloseStars = () => setShowStars(false);
-  const handleCloseForks = () => setShowForks(false);
-  const handleCloseCommits = () => setShowCommits(false);
-  const handleCloseIssues = () => setShowIssues(false);
-  const handleClosePulls = () => setShowPulls(false);
-  const handleCloseVotes = () => setShowVotes(false);
-
-  const handleCloseAbout = () => setShowAbout(false);
 
   const handleShowStars = () => {
     setShowForks(false)
@@ -110,41 +100,49 @@ function App() {
     setShowAbout(true)
   }
 
+  const handleCloseStars = () => setShowStars(false);
+  const handleCloseForks = () => setShowForks(false);
+  const handleCloseCommits = () => setShowCommits(false);
+  const handleCloseIssues = () => setShowIssues(false);
+  const handleClosePulls = () => setShowPulls(false);
+  const handleCloseVotes = () => setShowVotes(false);
+  const handleCloseAbout = () => setShowAbout(false);
+
   useEffect(() => {
-    fetchRepos(frameworks)
+    fetchRepos(FRAMEWORKDATA)
       .then(response => {
         setRepos(response)
       }).catch(error => {
         setError("Something went wrong.")
       })
-    fetchBatchCommits(frameworks)
+    fetchBatchCommits(FRAMEWORKDATA)
       .then(response => {
         console.log(response)
         setCommits(response)
       }).catch(error => {
         setError("Something went wrong.")
       })
-    fetchBatchIssues(frameworks)
+    fetchBatchIssues(FRAMEWORKDATA)
       .then(response => {
         console.log(response)
         setIssues(response)
       }).catch(error => {
         setError("Something went wrong.")
       })
-    fetchBatchPulls(frameworks)
+    fetchBatchPulls(FRAMEWORKDATA)
       .then(response => {
         console.log(response)
         setPulls(response)
       }).catch(error => {
         setError("Something went wrong.")
       })
-    getVoteData(votes) 
+    getVoteData() 
       .then(response => {
         setVotes(response)
       }).catch(error => {
         setError("Something went wrong.")
       })
-  }, [frameworks, votes])
+  }, [])
 
   const handleVote = (vote) => {
     setVotes([...votes, vote])
@@ -157,7 +155,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-
+      
       <Button 
         className="btn-lg" 
         style={{
@@ -339,7 +337,7 @@ function App() {
         </ModalFooter>
       </Modal>
 
-      <VoteForm vote={vote} frameworks={frameworks} handleVote={handleVote} />
+      <VoteForm vote={vote} handleVote={handleVote} />
 
       <Button 
         className="btn-lg" 

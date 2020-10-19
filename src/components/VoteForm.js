@@ -1,10 +1,11 @@
-import React, { Component} from 'react';
+import React from 'react';
 import { castNewVote } from '../services/VoteCounterApi';
 import EmailErrorComponent from '././EmailErrorComponent';
 import SessionErrorComponent from '././SessionErrorComponent';
 import SuccessComponent from '././SuccessComponent';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { FRAMEWORKDATA } from '../services/FrameworkData';
 
 export default class VoteForm extends React.Component {
     state = {
@@ -101,7 +102,7 @@ export default class VoteForm extends React.Component {
                   }}
                 >
                 <option value="" disabled>Choose a Framework</option>
-                {this.props.frameworks.map(framework => 
+                {FRAMEWORKDATA.map(framework => 
                   <option value={framework.repo}>{framework.repo}</option>)
                 }}
                 </select>

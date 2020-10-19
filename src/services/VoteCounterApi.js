@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export const castNewVote = ({email, framework}) => {
   return axios
-    .post('http://localhost:3000/api/votes', {email, framework})
+    .post('/api/votes', {email, framework})
     .then(response => response.data)
 }
 
 export const getVoteData = () => {
-  return axios('http://localhost:3000/api/votes')
+  return axios('/api/votes')
     .then(response => response.data)
 }
 

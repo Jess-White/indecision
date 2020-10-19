@@ -2,10 +2,13 @@
 
 Indecision is a data visualization app built on a React frontend and Rails backend. Indecision displays API data for four client-side Javascript frameworks:
 
-React: https://github.com/facebook/react
-Angular: https://github.com/angular/angular.js
-Ember: https://github.com/emberjs/ember.js/
-Vue: https://github.com/vuejs/vue
+- React: https://github.com/facebook/react
+
+- Angular: https://github.com/angular/angular.js
+
+- Ember: https://github.com/emberjs/ember.js/
+
+- Vue: https://github.com/vuejs/vue
 
 Indecision helps users make an informed choice by providing clear side-by-side comparisons of GitHub activity for each repo using the GitHub API:
 

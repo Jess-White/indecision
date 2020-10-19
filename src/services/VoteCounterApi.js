@@ -26,3 +26,4 @@ export const tallyVotes = (votes) => {
   })
   return tallyArray;
 }
+

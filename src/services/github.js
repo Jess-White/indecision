@@ -1,13 +1,13 @@
-//straightforward:
+//straightforward using interpolation:
 //starred_count
 //forks_count
 
-//one-level deep:
+//one-level deep using pagination:
 //issues
 //pulls
 //commits
 
-//two-level deep:
+//two-level deep: <-----iceboxed for now
 //events
 
 //Basic repo data api calls, for stars through starred_count and forks through forks_count:

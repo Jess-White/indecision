@@ -1,35 +1,32 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import { Doughnut } from 'react-chartjs-2';
-import { tallyVotes } from '../services/VoteCounterApi';
+import Card from 'react-bootstrap/Card';
 
-
-export default class VoteTallyChart extends React.Component {
+export default class IssuesChart extends React.Component {
   render() {
-    console.log(tallyVotes(this.props.votes))
+    console.log(this.props.repos)
     return (
       <div>
       <Card style={{backgroundColor: "#000058", paddingBottom: "2%"}}>
-      <Doughnut
+                <Doughnut
                 data={
-                  {labels: tallyVotes(this.props.votes).map(tally => tally.name),
+                  {labels: this.props.repos.map(repo => repo.name),
                     datasets: [
                     {
-                      label: "Votes",
+                      label: "Issues",
                       backgroundColor: ["#0dba86", "#00e6e6", "#ff4500", "#e6003a"],
                       borderColor: "#ffff1b",
                       borderWidth: 1,
-                      data: tallyVotes(this.props.votes).map(tally => tally.total)
+                      data: this.props.issues
                     }
                   ]}
                 }
                     options={{
                       title:{
                         display:true,
-                        text:'Votes',
-                        fontColor:"#ffff1b",
-
+                        text:'Issues',
                         fontSize:30,
+                        fontColor:"#ffff1b"
                       },
                       legend:{
                         display:true,
@@ -37,7 +34,8 @@ export default class VoteTallyChart extends React.Component {
                       }
                     }}
                     />
-        </Card>
+                </Card>
         </div>
-        );
-      }}
+      );
+    }
+  }

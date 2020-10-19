@@ -1,11 +1,13 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import Card from 'react-bootstrap/Card';
 
 export default class DoughnutChart extends React.Component {
   render() {
     console.log(this.props.repos)
     return (
       <div>
+      <Card style={{backgroundColor: "#000058", margin: "10%", paddingBottom: "5%"}}>
       <Doughnut
       data={
         {labels: this.props.repos.map(repo => repo.name),
@@ -23,15 +25,17 @@ export default class DoughnutChart extends React.Component {
             title:{
               display:true,
               text:'Stars',
-              fontSize:20,
-              color:"#ffff1b"
+              fontSize:30,
+              fontColor:"#ffff1b"
             },
             legend:{
               display:true,
-              position:'right'
+              position:'left'
             }
           }}
           />
+        </Card>
+        <Card style={{backgroundColor: "#000058", margin: "10%"}}>
           <Doughnut
           data={
             {labels: this.props.repos.map(repo => repo.name),
@@ -49,14 +53,17 @@ export default class DoughnutChart extends React.Component {
                 title:{
                   display:true,
                   text:'Forks',
-                  fontSize:20
+                  fontSize:30,
+                  fontColor:"#ffff1b"
                 },
                 legend:{
                   display:true,
-                  position:'right'
+                  position:'left'
                 }
               }}
               />
+            </Card>
+            <Card style={{backgroundColor: "#000058", margin: "10%"}}>
             <Doughnut
             data={
               {labels: this.props.repos.map(repo => repo.name),
@@ -74,14 +81,17 @@ export default class DoughnutChart extends React.Component {
                   title:{
                     display:true,
                     text:'Commits',
-                    fontSize:20
+                    fontSize:30,
+                    fontColor:"#ffff1b"
                   },
                   legend:{
                     display:true,
-                    position:'right'
+                    position:'left'
                   }
                 }}
                 />
+                </Card>
+                <Card style={{backgroundColor: "#000058", margin: "10%"}}>
                 <Doughnut
                 data={
                   {labels: this.props.repos.map(repo => repo.name),
@@ -99,15 +109,18 @@ export default class DoughnutChart extends React.Component {
                       title:{
                         display:true,
                         text:'Issues',
-                        fontSize:20
+                        fontSize:30,
+                        fontColor:"#ffff1b"
                       },
                       legend:{
                         display:true,
-                        position:'right'
+                        position:'left'
                       }
                     }}
                     />
-                    <Doughnut
+                </Card>
+                <Card style={{backgroundColor: "#000058", margin: "10%"}}>
+                <Doughnut
                 data={
                   {labels: this.props.repos.map(repo => repo.name),
                     datasets: [
@@ -124,14 +137,16 @@ export default class DoughnutChart extends React.Component {
                       title:{
                         display:true,
                         text:'Pulls',
-                        fontSize:20
+                        fontSize:30,
+                        fontColor:"#ffff1b"
                       },
                       legend:{
                         display:true,
-                        position:'right'
+                        position:'left'
                       }
                     }}
                     />
+              </Card>
         </div>
       );
     }

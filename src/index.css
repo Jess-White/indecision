@@ -15,8 +15,6 @@ code {
 
 .App {
   background-color: #000080;
+  padding-bottom: 1%;
 }
 
-h1 {
-  color: #ffff1b;
-}

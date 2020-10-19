@@ -4,10 +4,9 @@ import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalFooter from 'react-bootstrap/ModalFooter';
 import './App.css';
-import { getRepoData, fetchRepos, fetchBatchCommits, fetchBatchIssues, fetchBatchPulls } from './services/github';
-import { castNewVote, getVoteData } from './services/VoteCounterApi';
+import { fetchRepos, fetchBatchCommits, fetchBatchIssues, fetchBatchPulls } from './services/github';
+import { getVoteData } from './services/VoteCounterApi';
 import Header from './components/Header';
-import DoughnutChart from './components/DoughnutChart';
 import StarsChart from './components/StarsChart';
 import ForksChart from './components/ForksChart';
 import CommitsChart from './components/CommitsChart';
@@ -20,7 +19,6 @@ import { FRAMEWORKDATA } from './services/FrameworkData';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const otherFrameworks = [{owner: "sveltejs", name: "svelte"}, {owner: "jquery", name: "jquery"}]
   const [frameworks, setFrameworks] = useState(FRAMEWORKDATA)
   const [repos, setRepos] = useState([])
   const [commits, setCommits] = useState([])
@@ -29,7 +27,6 @@ function App() {
   const [vote, setVote] = useState({email: '', framework: ''})
   const [error, setError] = useState("")
   const [votes, setVotes] = useState([])
-  const [hidden, setHidden] = useState(false);
   const [showStars, setShowStars] = useState(false);
   const [showForks, setShowForks] = useState(false);
   const [showCommits, setShowCommits] = useState(false);
@@ -179,13 +176,15 @@ function App() {
       </ModalBody>
         <ModalFooter>
           <Button 
-          className="close-btn" 
-          color="danger" 
-          style={{ 
-            backgroundColor: "#000080", 
-            color: "#ffff1b", 
-            width: "100%"}} 
-          onClick={handleCloseAbout}>Close</Button>
+            className="close-btn" 
+            color="danger" 
+            style={{ 
+              backgroundColor: "#000080", 
+              color: "#ffff1b", 
+              width: "100%"
+            }} 
+            onClick={handleCloseAbout}>Close
+          </Button>
         </ModalFooter>
       </Modal>
 
@@ -206,7 +205,16 @@ function App() {
       <StarsChart repos={repos}/>
       </ModalBody>
         <ModalFooter>
-          <Button className="close-btn" color="danger" style={{ backgroundColor: "#000080", color: "#ffff1b", width: "100%"}} onClick={handleCloseStars}>Close</Button>
+          <Button 
+            className="close-btn" 
+            color="danger" 
+            style={{ 
+              backgroundColor: "#000080", 
+              color: "#ffff1b", 
+              width: "100%"
+            }} 
+            onClick={handleCloseStars}>Close
+          </Button>
         </ModalFooter>
       </Modal>
 
@@ -228,7 +236,16 @@ function App() {
       <ForksChart repos={repos}/>
       </ModalBody>
         <ModalFooter>
-          <Button className="close-btn" color="danger" style={{ backgroundColor: "#000080", color: "#ffff1b", width: "100%"}} onClick={handleCloseForks}>Close</Button>
+          <Button 
+            className="close-btn" 
+            color="danger" 
+            style={{ 
+              backgroundColor: "#000080", 
+              color: "#ffff1b", 
+              width: "100%"
+            }} 
+            onClick={handleCloseForks}>Close
+          </Button>
         </ModalFooter>
       </Modal>
 
@@ -249,7 +266,16 @@ function App() {
       <CommitsChart repos={repos} commits={commits}/>
       </ModalBody>
         <ModalFooter>
-          <Button className="close-btn" color="danger" style={{ backgroundColor: "#000080", color: "#ffff1b", width: "100%"}} onClick={handleCloseCommits}>Close</Button>
+          <Button 
+            className="close-btn" 
+            color="danger" 
+            style={{ 
+              backgroundColor: "#000080", 
+              color: "#ffff1b", 
+              width: "100%"
+            }} 
+            onClick={handleCloseCommits}>Close
+          </Button>
         </ModalFooter>
       </Modal>
 
@@ -270,7 +296,16 @@ function App() {
       <IssuesChart repos={repos} issues={issues}/>
       </ModalBody>
         <ModalFooter>
-          <Button className="close-btn" color="danger" style={{ backgroundColor: "#000080", color: "#ffff1b", width: "100%"}} onClick={handleCloseIssues}>Close</Button>
+          <Button 
+            className="close-btn" 
+            color="danger" 
+            style={{ 
+              backgroundColor: "#000080", 
+              color: "#ffff1b", 
+              width: "100%"
+            }} 
+            onClick={handleCloseIssues}>Close
+          </Button>
         </ModalFooter>
       </Modal>
 
@@ -291,7 +326,16 @@ function App() {
       <PullsChart repos={repos} pulls={pulls} />
       </ModalBody>
         <ModalFooter>
-          <Button className="close-btn" color="danger" style={{ backgroundColor: "#000080", color: "#ffff1b", width: "100%"}} onClick={handleClosePulls}>Close</Button>
+          <Button 
+          className="close-btn" 
+          color="danger" 
+          style={{ 
+            backgroundColor: "#000080", 
+            color: "#ffff1b", 
+            width: "100%"
+          }} 
+            onClick={handleClosePulls}>Close
+          </Button>
         </ModalFooter>
       </Modal>
 
@@ -314,7 +358,14 @@ function App() {
       <VoteTallyChart votes={votes}/>
       </ModalBody>
         <ModalFooter>
-          <Button className="close-btn" style={{ backgroundColor: "#000080", color: "#ffff1b", width: "100%"}} onClick={handleCloseVotes}>Close</Button>
+          <Button 
+          className="close-btn" 
+          style={{ 
+            backgroundColor: "#000080", 
+            color: "#ffff1b", 
+            width: "100%"
+          }} 
+          onClick={handleCloseVotes}>Close</Button>
         </ModalFooter>
       </Modal>
 

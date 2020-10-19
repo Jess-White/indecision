@@ -27,7 +27,7 @@ Users can view the following metrics:
 - Pull requests
 - Issues
 
-I used a JS data visualization library called Chartjs to visualize the data, since Chartjs is highly customizable and offers a number of different data visualization options. You can see documentation for Chartjs here:
+Indecision uses a JS data visualization library called Chartjs to visualize the data, since Chartjs is highly customizable and offers a number of different data visualization options. You can see documentation for Chartjs here:
 
 https://www.chartjs.org/docs
 
@@ -39,7 +39,7 @@ https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react
 
 https://github.com/jerairrest/react-chartjs-2
 
-I used this Doughnut component:
+This Doughnut component provided the best side-by-side comparison:
 
 https://www.chartjs.org/docs/latest/charts/doughnut.html
 

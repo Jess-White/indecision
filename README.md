@@ -1,4 +1,53 @@
+## Welcome to Indecision!
 
+Indecision is a data visualization app built on a React frontend and Rails backend. Indecision displays API data for four client-side Javascript frameworks:
+
+React: https://github.com/facebook/react
+Angular: https://github.com/angular/angular.js
+Ember: https://github.com/emberjs/ember.js/
+Vue: https://github.com/vuejs/vue
+
+Indecision helps users make an informed choice by providing clear side-by-side comparisons of GitHub activity for each repo using the GitHub API:
+
+https://docs.github.com/v3/
+
+GitHub API Overview:
+
+https://docs.github.com/en/free-pro-team@latest/rest/overview
+
+GitHub API Endpoints:
+
+https://docs.github.com/en/free-pro-team@latest/rest/overview/endpoints-available-for-github-apps
+
+Users can view the following metrics: 
+
+- Watchers/Stars
+- Forks
+- Commits
+- Pull requests
+- Issues
+
+I used a JS data visualization library called Chartjs to visualize the data, since Chartjs is highly customizable and offers a number of different data visualization options. You can see documentation for Chartjs here:
+
+https://www.chartjs.org/docs
+
+And a tutorial for using Chartjs in React here:
+
+https://www.educative.io/edpresso/how-to-use-chartjs-to-create-charts-in-react
+
+...which uses this React wrapper:
+
+https://github.com/jerairrest/react-chartjs-2
+
+I used this Doughnut component:
+
+https://www.chartjs.org/docs/latest/charts/doughnut.html
+
+After looking through the visualizations, users can vote for the best framework. The app incorporates verification on the backend as well as a simple local storage function to restrict users to one vote per email per browser session. Users can also see a running tally of votes in final modal. 
+
+Votes are saved on a Rails backend, the repo for which can be found here:
+
+https://github.com/Jess-White/indecision_backend
 
 Read on for some npm and React basic info:
 
